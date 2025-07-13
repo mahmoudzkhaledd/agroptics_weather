@@ -22,7 +22,7 @@ export default function LoginPage() {
         toast.error(res.error);
         return;
       }
-      // window.location.href = "/";
+      window.location.href = "/";
     });
   };
   return (

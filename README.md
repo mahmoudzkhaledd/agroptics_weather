@@ -1,5 +1,5 @@
 # Geoptics Weather
-
+![System Architecture](images/arch.png)
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
@@ -15,13 +15,13 @@ Follow these steps to get the application running locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/mahmoudzkhaledd/geoptics_weather.git
+git clone https://github.com/mahmoudzkhaledd/agroptics_weather.git
 ```
 
 ### 2. Navigate to Docker Directory
 
 ```bash
-cd geoptics_weather/docker
+cd agroptics_weather/docker
 ```
 
 ### 3. Build and Start Services

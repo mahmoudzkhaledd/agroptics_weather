@@ -1,5 +1,5 @@
 {
-  "name": "geo_weather_backend",
+  "name": "agroptics_weather_backend",
   "version": "1.0.50",
   "scripts": {
     "dev": "bun run --watch src/index.ts",

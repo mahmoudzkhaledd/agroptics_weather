@@ -3,8 +3,7 @@ services:
     container_name: my-mysql
     image: mysql:latest
     restart: always
-    ports:
-      - "3306:3306"
+
     environment:
       MYSQL_DATABASE: agroptics
       MYSQL_USER: agrouser
@@ -20,8 +19,6 @@ services:
     container_name: redis
     networks:
       - agro_network
-    ports:
-      - "6379:6379"
 
   backend:
     build: ../backend

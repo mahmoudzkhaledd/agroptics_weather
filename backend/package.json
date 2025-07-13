@@ -1,0 +1,33 @@
+{
+  "name": "geo_weather_backend",
+  "version": "1.0.50",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "db": "bunx prisma generate && bunx prisma db push && bun run dev",
+    "studio": "bunx prisma studio --browser none",
+    "clean": "rm -rf build",
+    "db:reset": "bunx prisma migrate reset"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "@turf/turf": "^7.2.0",
+    "@types/connect-redis": "^0.0.23",
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "connect-redis": "9.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "typescript": "^5.8.3",
+    "zod": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/express-session": "^1.18.2",
+    "prisma": "^6.11.1",
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}

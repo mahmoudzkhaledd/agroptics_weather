@@ -1,0 +1,63 @@
+services:
+  mysql:
+    container_name: my-mysql
+    image: mysql:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: agroptics
+      MYSQL_USER: agrouser
+      MYSQL_PASSWORD: agropass
+      MYSQL_ROOT_PASSWORD: agro_pass
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - agro_network
+  redis:
+    image: redis:latest
+    container_name: redis
+    networks:
+      - agro_network
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ../backend
+    container_name: agro_backend
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - "3001:3001"
+      - "5555:5555"
+    networks:
+      - agro_network
+    environment:
+      PORT: 3001
+      DATABASE_URL: mysql://agrouser:agropass@mysql/agroptics
+      SESSION_SECRET: 2F993B2443FFAB182F8FD81B2443FFAB182F7E9D76B2443FFAB182F
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+  frontend:
+    build: ../frontend
+    container_name: agro_frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+    networks:
+      - agro_network
+    environment:
+      NEXT_PUBLIC_BACKEND_BASE_URL: http://localhost:3001/api
+      REACT_EDITOR: atom
+networks:
+  agro_network:
+    driver: bridge
+volumes:
+  mysql-data:
